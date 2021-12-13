@@ -10,8 +10,24 @@
           <div class="card px-3">
             <div class="card-body">
               <h4 class="card-title">Awesome Todo list</h4>
-              <add-todo />
+              <add-todo @addTodoItem="addTodoItem" />
+
               <div class="list-wrapper">
+                <ul class="d-flex flex-column-reverse todo-list">
+                  <li v-for="todoItem in todoItems" :key="todoItem">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="checkbox" type="checkbox" />
+                          {{ todoItem }}
+                        <i class="input-helper"></i
+                      ></label>
+                    </div>
+                    <i class="remove mdi mdi-close-circle-outline"></i>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- <div class="list-wrapper">
                 <ul class="d-flex flex-column-reverse todo-list">
                   <li>
                     <div class="form-check">
@@ -71,7 +87,7 @@
                     <i class="remove mdi mdi-close-circle-outline"></i>
                   </li>
                 </ul>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -87,6 +103,16 @@ export default {
   name: "Todo",
   components: {
     addTodo,
+  },
+  data() {
+    return {
+      todoItems: [],
+    };
+  },
+  methods: {
+    addTodoItem(newTodoItem) {
+      this.todoItems.push(newTodoItem);
+    },
   },
 };
 </script>
