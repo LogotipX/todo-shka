@@ -11,22 +11,7 @@
             <div class="card-body">
               <h4 class="card-title">Awesome Todo list</h4>
               <add-todo @addTodoItem="addTodoItem" />
-
-              <div class="list-wrapper">
-                <ul class="d-flex flex-column-reverse todo-list">
-                  <li v-for="todoItem in todoItems" :key="todoItem">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="checkbox" type="checkbox" />
-                          {{ todoItem }}
-                        <i class="input-helper"></i
-                      ></label>
-                    </div>
-                    <i class="remove mdi mdi-close-circle-outline"></i>
-                  </li>
-                </ul>
-              </div>
-
+              <todos-list @removeTodoItemIdx="removeTodoItem" :todoItems="todoItems" />
             </div>
           </div>
         </div>
@@ -37,22 +22,47 @@
 
 <script>
 import addTodo from "./components/addTodo.vue";
+import TodosList from "./components/todosList.vue";
 
 export default {
   name: "Todo",
   components: {
     addTodo,
+    TodosList,
   },
   data() {
     return {
       todoItems: [],
     };
   },
+
+  mounted() {
+    if(window.localStorage.getItem("todoItems")) {
+      this.todoItems = JSON.parse(window.localStorage.getItem("todoItems"));
+    }
+  },
+
   methods: {
     addTodoItem(newTodoItem) {
-      this.todoItems.push(newTodoItem);
+      if (newTodoItem.length) this.todoItems.push(newTodoItem);
     },
+    
+    removeTodoItem(idxTodoItem) {
+      this.todoItems = this.todoItems.filter((t, idx) => idx !== idxTodoItem);
+    }
   },
+
+  watch: {
+    todoItemsLength() {
+      window.localStorage.setItem("todoItems", JSON.stringify(this.todoItems));
+    }
+  },
+
+  computed: {
+    todoItemsLength() {
+      return this.todoItems.length;
+    }
+  }
 };
 </script>
 
