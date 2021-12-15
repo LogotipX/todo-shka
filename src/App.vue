@@ -11,7 +11,11 @@
             <div class="card-body">
               <h4 class="card-title">Awesome Todo list</h4>
               <add-todo @addTodoItem="addTodoItem" />
-              <todos-list @removeTodoItemIdx="removeTodoItem" :todoItems="todoItems" />
+              <todos-list
+                @removeTodoItemIdx="removeTodoItem"
+                @checkItemIdx="checkItemIdx"
+                :todoItems="todoItems"
+              />
             </div>
           </div>
         </div>
@@ -37,32 +41,43 @@ export default {
   },
 
   mounted() {
-    if(window.localStorage.getItem("todoItems")) {
+    if (window.localStorage.getItem("todoItems")) {
       this.todoItems = JSON.parse(window.localStorage.getItem("todoItems"));
     }
   },
 
   methods: {
-    addTodoItem(newTodoItem) {
-      if (newTodoItem.length) this.todoItems.push(newTodoItem);
+    addTodoItem(newTodoItemTitle) {
+      const newTodoItem = {
+        checked: false,
+        title: newTodoItemTitle,
+      };
+
+      if (newTodoItem.title.length) this.todoItems.push(newTodoItem);
     },
-    
+
     removeTodoItem(idxTodoItem) {
       this.todoItems = this.todoItems.filter((t, idx) => idx !== idxTodoItem);
-    }
+    },
+
+    checkItemIdx(idx) {
+      console.log("App.vue", typeof idx);
+      this.todoItems[idx]["checked"] = !this.todoItems[idx]["checked"];
+      window.localStorage.setItem("todoItems", JSON.stringify(this.todoItems));
+    },
   },
 
   watch: {
     todoItemsLength() {
       window.localStorage.setItem("todoItems", JSON.stringify(this.todoItems));
-    }
+    },
   },
 
   computed: {
     todoItemsLength() {
       return this.todoItems.length;
-    }
-  }
+    },
+  },
 };
 </script>
 

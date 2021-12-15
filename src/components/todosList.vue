@@ -3,11 +3,26 @@
     <ul class="d-flex flex-column-reverse todo-list">
       <li v-for="(todoItem, idx) in todoItems" :key="todoItem">
         <div class="form-check">
-          <label class="form-check-label">
-            <input class="checkbox" type="checkbox" />
-            {{ todoItem }}
-            <i class="input-helper"></i
-          ></label>
+          <div
+            @click="selectItemIdx(idx)"
+            :class="{ completed: todoItem['checked'] }"
+            :style="
+              selectedItems.find((i) => String(i) === String(idx))
+                ? fullText
+                : null
+            "
+            class="form-check-label"
+          >
+            <input
+              :checked="todoItem['checked']"
+              @change="checkItem(idx)"
+              @click.stop
+              class="checkbox"
+              type="checkbox"
+            />
+            {{ todoItem["title"] }}
+            <i class="input-helper"></i>
+          </div>
         </div>
         <i
           @click="removeTodoItem(idx)"
@@ -21,19 +36,47 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      fullText: {
+        "white-space": "normal",
+      },
+
+      selectedItems: [],
+    };
   },
 
   props: {
     todoItems: Array,
   },
 
+  emits: {
+    removeTodoItem: Number,
+    checkItemIdx: [Number, Boolean],
+  },
+
   methods: {
     removeTodoItem(idx) {
       this.$emit("removeTodoItemIdx", idx);
     },
-  },
 
-  watch: {},
+    checkItem(idx) {
+      this.$emit("checkItemIdx", idx);
+      console.log(idx);
+      console.log(typeof idx);
+    },
+
+    selectItemIdx(idx) {
+      // debugger; // eslint-disable-line no-debugger
+      if (!this.selectedItems.find((i) => String(i) === String(idx))) {
+        // debugger; // eslint-disable-line no-debugger
+        this.selectedItems.push(String(idx));
+        // debugger; // eslint-disable-line no-debugger
+      } else {
+        this.selectedItems = this.selectedItems.filter(
+          (i) => String(i) !== String(idx)
+        );
+      }
+    },
+  },
 };
 </script>
