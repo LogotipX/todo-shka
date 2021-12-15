@@ -50,7 +50,7 @@ export default {
   },
 
   emits: {
-    removeTodoItem: Number,
+    removeTodoItemIdx: [Number, Boolean],
     checkItemIdx: [Number, Boolean],
   },
 
@@ -61,8 +61,6 @@ export default {
 
     checkItem(idx) {
       this.$emit("checkItemIdx", idx);
-      console.log(idx);
-      console.log(typeof idx);
     },
 
     selectItemIdx(idx) {

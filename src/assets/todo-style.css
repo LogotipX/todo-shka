@@ -251,6 +251,11 @@ body {
     white-space: nowrap
 }
 
+.checkbox {
+    width: 18px;
+    height: 18px;
+}
+
 .form-check .form-check-label {
     min-height: 18px;
     display: block;

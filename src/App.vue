@@ -57,11 +57,10 @@ export default {
     },
 
     removeTodoItem(idxTodoItem) {
-      this.todoItems = this.todoItems.filter((t, idx) => idx !== idxTodoItem);
+      this.todoItems = this.todoItems.filter((t, idx) => idx !== Number(idxTodoItem));
     },
 
     checkItemIdx(idx) {
-      console.log("App.vue", typeof idx);
       this.todoItems[idx]["checked"] = !this.todoItems[idx]["checked"];
       window.localStorage.setItem("todoItems", JSON.stringify(this.todoItems));
     },
