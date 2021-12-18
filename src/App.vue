@@ -4,21 +4,15 @@
     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
   />
   <div class="page-content page-container" id="page-content">
-    <div class="padding">
-      <div class="row container d-flex justify-content-center">
-        <div class="col-md-12">
-          <div class="card px-3">
-            <div class="card-body">
-              <h4 class="card-title">Awesome Todo list</h4>
-              <add-todo @addTodoItem="addTodoItem" />
-              <todos-list
-                @removeTodoItemIdx="removeTodoItem"
-                @checkItemIdx="checkItemIdx"
-                :todoItems="todoItems"
-              />
-            </div>
-          </div>
-        </div>
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Awesome Todo list</h4>
+        <add-todo @addTodoItem="addTodoItem" />
+        <todos-list
+          @removeTodoItemIdx="removeTodoItem"
+          @checkItemIdx="checkItemIdx"
+          :todoItems="todoItems"
+        />
       </div>
     </div>
   </div>
