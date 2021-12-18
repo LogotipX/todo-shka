@@ -1,9 +1,5 @@
 <template>
-  <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-  />
-  <div class="page-content page-container" id="page-content">
+  <div class="page-container">
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Awesome Todo list</h4>
