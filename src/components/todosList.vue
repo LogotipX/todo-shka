@@ -20,7 +20,12 @@
               class="checkbox"
               type="checkbox"
             />
-            {{ todoItem["title"] }}
+            <section class="input-helper">
+              <img class="svg-icons" src="@/assets/SVG/edit.svg" alt="" />
+              {{ todoItem["title"] }}
+            </section>
+            <!-- {{ todoItem["title"] }} -->
+            <!--  -->
             <i class="input-helper"></i>
           </div>
         </div>

@@ -1,6 +1,16 @@
 .page-container {
   background-color: #f9f9fa;
 }
+
+.options-icons > * {
+  top: 0;
+  padding: 0 5px;
+}
+.svg-icons:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+}
+
 .flex {
   flex: 1 1 auto;
 }
