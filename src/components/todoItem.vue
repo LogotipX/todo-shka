@@ -10,12 +10,17 @@
     <input
       v-model="todoItem['title']"
       @keypress.enter="changeItemText"
-      class="form-control todo-list-input"
+      class="change-input todo-list-input"
       type="text"
       placeholder="change text"
     />
   </template>
-  <div v-if="!editMode" class="form-check">
+  <div
+    v-if="!editMode"
+    @mouseenter="showRedact = true"
+    @mouseleave="showRedact = false"
+    class="form-check"
+  >
     <div
       @click="selectItem"
       :class="{ completed: todoItem['checked'] }"
@@ -31,6 +36,7 @@
       />
       <section class="input-helper">
         <img
+          v-if="showRedact"
           @click.stop="editMode = true"
           class="svg-icons"
           src="@/assets/SVG/edit.svg"
@@ -59,6 +65,7 @@ export default {
 
       selectedItem: false,
       editMode: false,
+      showRedact: false,
     };
   },
   props: {
