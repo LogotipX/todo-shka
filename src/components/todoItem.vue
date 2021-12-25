@@ -68,6 +68,7 @@ export default {
   emits: {
     checkItemIdx: Number,
     changeTodoItem: Object,
+    removeTodoItemIdx: Number,
   },
   methods: {
     checkItem(idx) {
@@ -85,6 +86,10 @@ export default {
       } else {
         this.$emit("changeTodoItem", this.todoItemIdx, this.todoItem);
       }
+    },
+
+    removeTodoItem(idx) {
+      this.$emit("removeTodoItemIdx", idx);
     },
   },
 };

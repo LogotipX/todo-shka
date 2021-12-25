@@ -8,6 +8,7 @@
           :todoItemIdx="idx"
           @checkItemIdx="checkItem"
           @changeTodoItem="updateTodoItem"
+          @removeTodoItemIdx="removeTodoItem"
         />
       </li>
     </ul>
