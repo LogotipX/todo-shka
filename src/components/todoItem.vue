@@ -24,7 +24,6 @@
     <div
       @click="selectItem"
       :class="{ completed: todoItem['checked'] }"
-      :style="selectedItem ? fullText : null"
       class="form-check-label"
     >
       <input
@@ -34,7 +33,10 @@
         class="checkbox"
         type="checkbox"
       />
-      <section class="input-helper">
+      <section
+        :style="selectedItem ? fullText : hiddenText"
+        class="input-helper"
+      >
         <img
           v-if="showRedact"
           @click.stop="editMode = true"
@@ -61,6 +63,10 @@ export default {
 
       fullText: {
         "white-space": "normal",
+      },
+      hiddenText: {
+        overflow: "hidden",
+        "text-overflow": "ellipsis",
       },
 
       selectedItem: false,
