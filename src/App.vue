@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container">
+  <div :style="{ width: todoWidth[selectedTodoWidth] }" class="page-container">
     <div class="card">
       <div class="card-body">
         <div
@@ -7,7 +7,14 @@
           style="display: flex; justify-content: space-between"
         >
           <h4 class="card-title">Awesome Todo list</h4>
-          <div class="options-icons">
+          <div class="options">
+            <select v-model="selectedTodoWidth" name="width" id="select-width">
+              <option>Small</option>
+              <option>Medium</option>
+              <option>Large</option>
+            </select>
+          </div>
+          <!-- <div class="options-icons">
             <span class="arrows-move-svg">
               <svg
                 class="svg-icons"
@@ -20,9 +27,9 @@
                 xml:space="preserve"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
-              >
-                <!-- <rect width="100%" height="100%" fill="black" /> -->
-                <g id="arrows_x2C__Drag_x2C__move_x2C__crossroads">
+              > -->
+          <!-- <rect width="100%" height="100%" fill="black" /> -->
+          <!-- <g id="arrows_x2C__Drag_x2C__move_x2C__crossroads">
                   <g
                     id="Arrows_x2C__choose_x2C__opportunity_x2C__person_x2C__ways_1_"
                   >
@@ -46,13 +53,13 @@
                 </g>
               </svg>
             </span>
-            <span>
-              <!-- <img
+            <span> -->
+          <!-- <img
                 class="svg-icons"
                 src="@/assets/SVG/arrows-move.svg"
                 alt=""
               /> -->
-            </span>
+          <!-- </span>
             <span class="settings-svg">
               <svg
                 class="svg-icons"
@@ -67,7 +74,7 @@
                 />
               </svg>
             </span>
-          </div>
+          </div> -->
         </div>
         <add-todo @addTodoItem="addTodoItem" />
         <todos-list
@@ -93,6 +100,13 @@ export default {
   },
   data() {
     return {
+      todoWidth: {
+        Small: "320px",
+        Medium: "480px",
+        Large: "720px",
+      },
+      selectedTodoWidth: "Small",
+
       todoItems: [],
     };
   },

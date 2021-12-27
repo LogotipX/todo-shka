@@ -167,6 +167,7 @@
   margin-bottom: 0.25rem;
 }
 .form-check {
+  width: 100%;
   position: relative;
   display: block;
   margin-top: 10px;
