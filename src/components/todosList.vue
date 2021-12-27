@@ -1,8 +1,7 @@
 <template>
   <div class="list-wrapper">
     <ul class="d-flex flex-column-reverse todo-list">
-      <li v-for="(item, idx) in todoItems" :key="item">
-        <!-- {{ todoItem }} : {{ idx }} -->
+      <li v-for="(item, idx) in todoItems" :key="item" class="todo-list-item">
         <todo-item
           :todoItemObject="item"
           :todoItemIdx="idx"

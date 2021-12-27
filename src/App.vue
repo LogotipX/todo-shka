@@ -115,6 +115,9 @@ export default {
     if (window.localStorage.getItem("todoItems")) {
       this.todoItems = JSON.parse(window.localStorage.getItem("todoItems"));
     }
+    if (window.localStorage.getItem("todoWidth")) {
+      this.selectedTodoWidth = window.localStorage.getItem("todoWidth");
+    }
   },
 
   methods: {
@@ -151,6 +154,10 @@ export default {
   watch: {
     todoItemsLength() {
       window.localStorage.setItem("todoItems", JSON.stringify(this.todoItems));
+    },
+
+    selectedTodoWidth() {
+      window.localStorage.setItem("todoWidth", this.selectedTodoWidth);
     },
   },
 
