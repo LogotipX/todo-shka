@@ -1,0 +1,23 @@
+{
+
+  "manifest_version": 2,
+  "name": "Todo-shka",
+  "version": "1.0",
+  "author": "LogotipX",
+
+  "description": "Simple todo-list as a browser extension",
+  "homepage_url": "https://github.com/LogotipX/todo-shka",
+  "icons": {
+    "48": "favicon.ico"
+  },
+
+  "permissions": [
+    "activeTab"
+  ],
+
+  "browser_action": {
+    "default_icon": "favicon.ico",
+    "default_title": "Todo-shka",
+    "default_popup": "index.html"
+  }
+}
