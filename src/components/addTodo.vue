@@ -5,7 +5,7 @@
       @keypress.enter="addTodoItem"
       type="text"
       class="form-control todo-list-input"
-      placeholder="What do you need to do today?"
+      placeholder="What to do?"
     />
     <button
       @click="addTodoItem"
